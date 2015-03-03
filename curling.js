@@ -133,7 +133,7 @@ $(function() {
 
     $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent("http://curlcast.ca/stats/organizations/qw4LUsJ1_aQ/competitions/1630-2015-tim-hortons-brier/standings") + '&callback=?', function(data) {
         var otherPage = $('<div/>').html(data.contents).contents();
-        $("#curlcast").append(otherPage.find("table")[1]);
+        $("#curlcast").append(otherPage.find("table")[0]);
         $("#curlcast table").removeClass("table-bordered table-condensed");
         $("#curlcast table").addClass("table-striped");
         $("#curlcast a").attr("href", "http://curlcast.ca" + $("#curlcast a").attr("href"));
