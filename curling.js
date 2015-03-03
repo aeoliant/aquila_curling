@@ -138,6 +138,7 @@ $(function() {
         $("#curlcast table").addClass("table-striped");
         $("#curlcast a").attr("href", "http://curlcast.ca" + $("#curlcast a").attr("href"));
         $("#curlcast a").attr("title", "");
+        $("#curlcast a").attr("target", "_blank");
         var standingsTable = $("#curlcast table tr").map(function() {
             return $(this).find("td").map(function() {
                 return $(this).html();
