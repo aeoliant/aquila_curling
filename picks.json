@@ -1,0 +1,301 @@
+var picks = [
+  {
+    "topFour": [
+      "NO",
+      "NL",
+      "TC",
+      "AB"
+    ],
+    "midSix": [
+      "SK",
+      "MB",
+      "BC",
+      "QC",
+      "ON",
+      "NB"
+    ],
+    "botFour": [
+      "NWT",
+      "NS",
+      "YK",
+      "PEI"
+    ],
+    "name": "Josh"
+  },
+  {
+    "topFour": [
+      "NO",
+      "NL",
+      "SK",
+      "MB"
+    ],
+    "midSix": [
+      "AB",
+      "PEI",
+      "ON",
+      "QC",
+      "BC",
+      "TC"
+    ],
+    "botFour": [
+      "NB",
+      "NS",
+      "YK",
+      "NWT"
+    ],
+    "name": "Laura"
+  },
+  {
+    "topFour": [
+      "NO",
+      "AB",
+      "NL",
+      "TC"
+    ],
+    "midSix": [
+      "MB",
+      "SK",
+      "BC",
+      "NWT",
+      "ON",
+      "QC"
+    ],
+    "botFour": [
+      "PEI",
+      "NS",
+      "NB",
+      "YK"
+    ],
+    "name": "Tony"
+  },
+  {
+    "topFour": [
+      "AB",
+      "TC",
+      "NO",
+      "NL"
+    ],
+    "midSix": [
+      "BC",
+      "QC",
+      "MB",
+      "ON",
+      "SK",
+      "NB"
+    ],
+    "botFour": [
+      "PEI",
+      "YK",
+      "NWT",
+      "NS"
+    ],
+    "name": "Tina"
+  },
+  {
+    "topFour": [
+      "TC",
+      "AB",
+      "MB",
+      "BC"
+    ],
+    "midSix": [
+      "ON",
+      "QC",
+      "NL",
+      "SK",
+      "NB",
+      "NO"
+    ],
+    "botFour": [
+      "PEI",
+      "NWT",
+      "YK",
+      "NS"
+    ],
+    "name": "Jon"
+  },
+  {
+    "topFour": [
+      "TC",
+      "NO",
+      "NL",
+      "AB"
+    ],
+    "midSix": [
+      "SK",
+      "ON",
+      "MB",
+      "BC",
+      "QC",
+      "YK"
+    ],
+    "botFour": [
+      "NB",
+      "NS",
+      "NWT",
+      "PEI"
+    ],
+    "name": "Chris"
+  },
+  {
+    "topFour": [
+      "AB",
+      "ON",
+      "TC",
+      "NL"
+    ],
+    "midSix": [
+      "NO",
+      "SK",
+      "YK",
+      "QC",
+      "MB",
+      "BC"
+    ],
+    "botFour": [
+      "NB",
+      "NS",
+      "NWT",
+      "PEI"
+    ],
+    "name": "Jason"
+  },
+  {
+    "topFour": [
+      "AB",
+      "NL",
+      "NO",
+      "MB"
+    ],
+    "midSix": [
+      "TC",
+      "SK",
+      "QC",
+      "ON",
+      "BC",
+      "NWT"
+    ],
+    "botFour": [
+      "NB",
+      "PEI",
+      "NS",
+      "YK"
+    ],
+    "name": "Sandra"
+  },
+  {
+    "topFour": [
+      "NO",
+      "AB",
+      "MB",
+      "NL"
+    ],
+    "midSix": [
+      "TC",
+      "SK",
+      "QC",
+      "NWT",
+      "BC",
+      "ON"
+    ],
+    "botFour": [
+      "NS",
+      "NB",
+      "YK",
+      "PEI"
+    ],
+    "name": "Alex"
+  },
+  {
+    "topFour": [
+      "NL",
+      "NO",
+      "TC",
+      "NT"
+    ],
+    "midSix": [
+      "AB",
+      "BC",
+      "QC",
+      "MB",
+      "SK",
+      "ON"
+    ],
+    "botFour": [
+      "NB",
+      "PEI",
+      "YK",
+      "NS"
+    ],
+    "name": "Sabina"
+  },
+  {
+    "topFour": [
+      "SK",
+      "MB",
+      "NS",
+      "TC"
+    ],
+    "midSix": [
+      "ON",
+      "NO",
+      "NB",
+      "NL",
+      "QC",
+      "YK"
+    ],
+    "botFour": [
+      "NWT",
+      "AB",
+      "BC",
+      "PEI"
+    ],
+    "name": "Jeff"
+  },
+  {
+    "topFour": [
+      "NL",
+      "AB",
+      "NO",
+      "TC"
+    ],
+    "midSix": [
+      "MB",
+      "SK",
+      "BC",
+      "ON",
+      "QC",
+      "NB"
+    ],
+    "botFour": [
+      "YK",
+      "PEI",
+      "NS",
+      "NWT"
+    ],
+    "name": "Nadiya"
+  },
+  {
+    "topFour": [
+      "TC",
+      "NO",
+      "NL",
+      "AB"
+    ],
+    "midSix": [
+      "MB",
+      "SK",
+      "ON",
+      "BC",
+      "QC",
+      "NB"
+    ],
+    "botFour": [
+      "NWT",
+      "PEI",
+      "NS",
+      "YK"
+    ],
+    "name": "Kent"
+  }
+];
