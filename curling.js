@@ -147,16 +147,15 @@ $(function() {
         var i = 0;
         var standings = [];
         for (; i < standingsTable.length; i += 3) {
-            standings[i] = {};
-            standings[i].name = getTeamCode($(standingsTable[i]).text());
-            standings[i].wins = standingsTable[i + 1];
-            standings[i].losses = standingsTable[i + 2];
-            standings[i].ratio = standings[i].wins / standings[i].losses;
+        	var index = Math.floor(i / 3);
+            standings[index] = {};
+            standings[index].name = getTeamCode($(standingsTable[i]).text());
+            standings[index].wins = standingsTable[i + 1];
+            standings[index].losses = standingsTable[i + 2];
+            standings[index].ratio = standings[index].wins / standings[index].losses;
         }
-        standings.sort(function(a, b) {
-            return b.ratio - a.ratio;
-        });
         var scores = score(makeScores(standings));
+        
         scores.sort(function(a, b) {
             return b.score - a.score;
         });
