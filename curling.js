@@ -1,6 +1,9 @@
-function drawPicksTable(data) {
+function drawPicksTable(data, seperatedScores) {
     for (var i = 0; i < data.length; i++) {
         drawPicksRow(data[i]);
+        if (i == Math.floor(data.length / 2)) {
+            drawStandingsRow(seperatedScores);
+        }
     }
 }
 
@@ -11,6 +14,19 @@ function drawPicksRow(rowData) {
     row.append($("<td>" + arrToString(rowData.topFour) + "</td>"));
     row.append($("<td>" + arrToString(rowData.midSix) + "</td>"));
     row.append($("<td>" + arrToString(rowData.botFour) + "</td>"));
+    row.append($("<td><small>" + rowData.score + "</small></td>"));
+    row.append($("<td class='text-muted'><small>" + rowData.exactScore + "</small></td>"));
+}
+
+function drawStandingsRow(seperatedScores) {
+    var row = $("<tr />")
+    $("#picks").append(row);
+    row.append($("<td></td>"));
+    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.topFour, "etch") + "</strong></td>"));
+    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.midSix, "etch") + "</strong></td>"));
+    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.botFour, "etch") + "</strong></td>"));
+    row.append($("<td></td>"));
+    row.append($("<td></td>"));
 }
 
 function drawScoreTable(data) {
@@ -24,13 +40,19 @@ function drawScoreRow(rowData) {
     $("#scores").append(row);
     row.append($("<td><strong>" + rowData.name + "</strong></td>"));
     row.append($("<td>" + rowData.score + "</td>"));
+    row.append($("<td class='text-muted'><small>" + rowData.exactScore + "</small></td>"));
 }
 
-function arrToString(arr) {
+function arrToString(arr, tag) {
     var ret = "";
     var i = 0;
     for (; i < arr.length; i++) {
-        ret += arr[i] + ", "
+        if (tag != undefined) {
+            ret += "<" + tag + ">" + arr[i] + "</" + tag + ">, ";
+        }
+        else {
+            ret += arr[i] + ", ";
+        }
     }
     ret = ret.substring(0, ret.length - 2);
     return ret;
@@ -43,25 +65,54 @@ function score(scores) {
         var ele = {};
         ele.name = picks[i].name;
         var score = 0;
+        var exactScore = 0;
         var j = 0;
         for (; j < 4; j++) {
             if (scores.topFour.indexOf(picks[i].topFour[j]) >= 0) {
-                picks[i].topFour[j] = "<strong>" + picks[i].topFour[j] + "</strong>"
                 score++;
+                if (scores.topFour[j] == picks[i].topFour[j]) {
+                    picks[i].topFour[j] = "<mark><strong>" + picks[i].topFour[j] + "</strong></mark>";
+                    exactScore++;
+                }
+                else {
+                    picks[i].topFour[j] = "<highlight><strong>" + picks[i].topFour[j] + "</strong></highlight>";
+                }
+            }
+            else {
+                picks[i].topFour[j] = "<em>" + picks[i].topFour[j] + "</em>";
             }
         }
         for (j = 0; j < 6; j++) {
             if (scores.midSix.indexOf(picks[i].midSix[j]) >= 0) {
-                picks[i].midSix[j] = "<strong>" + picks[i].midSix[j] + "</strong>"
                 score++;
+                if (scores.midSix[j] == picks[i].midSix[j]) {
+                    picks[i].midSix[j] = "<mark><strong>" + picks[i].midSix[j] + "</strong></mark>";
+                    exactScore++;
+                }
+                else {
+                    picks[i].midSix[j] = "<highlight><strong>" + picks[i].midSix[j] + "</strong></highlight>";
+                }
+            }
+            else {
+                picks[i].midSix[j] = "<em>" + picks[i].midSix[j] + "</em>";
             }
         }
         for (j = 0; j < 4; j++) {
             if (scores.botFour.indexOf(picks[i].botFour[j]) >= 0) {
-                picks[i].botFour[j] = "<strong>" + picks[i].botFour[j] + "</strong>"
                 score++;
+                if (scores.botFour[j] == picks[i].botFour[j]) {
+                    picks[i].botFour[j] = "<mark><strong>" + picks[i].botFour[j] + "</strong></mark>";
+                    exactScore++;
+                }
+                else {
+                    picks[i].botFour[j] = "<highlight><strong>" + picks[i].botFour[j] + "</strong></highlight>";
+                }
+            }
+            else {
+                picks[i].botFour[j] = "<em>" + picks[i].botFour[j] + "</em>";
             }
         }
+        ele.exactScore = exactScore;
         ele.score = score;
         ret[i] = ele;
     }
@@ -124,9 +175,19 @@ function makeScores(standings) {
         scores.botFour.push(standings[j].name);
     }
     // Nova Scotia and Yukon already out
-    scores.botFour.push("NS");
     scores.botFour.push("YK");
+    scores.botFour.push("NS");
     return scores;
+}
+
+function stableScoreSort(a, b) {
+    if (a.score == b.score) {
+        if (a.exactScore == b.exactScore) {
+            return b.position - a.position;
+        }
+        return b.exactScore - a.exactScore;
+    }
+    return b.score - a.score;
 }
 
 $(function() {
@@ -154,13 +215,20 @@ $(function() {
             standings[index].losses = standingsTable[i + 2];
             standings[index].ratio = standings[index].wins / standings[index].losses;
         }
-        var scores = score(makeScores(standings));
-        
-        scores.sort(function(a, b) {
-            return b.score - a.score;
-        });
+        var seperatedScores = makeScores(standings);
+        var scores = score(seperatedScores);
+        for (i = 0; i < scores.length; i ++) {
+            scores[i].position = i;
+            picks[i].position = i;
+            picks[i].score = scores[i].score;
+            picks[i].exactScore = scores[i].exactScore;
+        }
+
+        scores.sort(stableScoreSort);
+        picks.sort(stableScoreSort);
+
         drawScoreTable(scores);
-        drawPicksTable(picks);
+        drawPicksTable(picks, seperatedScores);
         $("#curlcast").append("<p class='text-muted'>Note: Yukon and Nova Scotia were eliminated in the pre-qualifier round robin.</p>");
     });
 });
