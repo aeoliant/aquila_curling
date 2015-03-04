@@ -15,12 +15,12 @@ correct {
 	font-weight: bold;
 	background-color: none;
 	font-weight: 400;
-	color:#000;
+	color:#333;
 }
 
 highlight {
 	padding: .2em;
-	color:#000;
+	color:#333;
 	/*background-color: rgba(245, 215, 110, 0.75);
 	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
@@ -30,7 +30,7 @@ highlight {
 
 wrong {
 	padding: .2em;
-	color:#888;
+	color:#999;
 	/*background-color: rgba(231, 76, 60, 0.4);
 	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
@@ -39,7 +39,7 @@ wrong {
 
 etch {
 	padding: .2em;
-	color:#000;
+	color:#333;
 	/*background-color: rgba(52, 152, 219, 0.1);
 	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
