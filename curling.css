@@ -7,11 +7,24 @@ body {
 	padding-bottom:10px;
 }
 
+mark {
+	background-color: rgba(46, 204, 113, 0.75);
+}
+
 highlight {
 	padding: .2em;
+	color:#000;
+	background-color: rgba(245, 215, 110, 0.75);
+}
+
+wrong {
+	padding: .2em;
+	color:#000;
+	background-color: rgba(231, 76, 60, 0.4);
 }
 
 etch {
 	padding: .2em;
-	background-color: rgba(0,0,200, 0.05);
+	color:#000;
+	background-color: rgba(52, 152, 219, 0.75);
 }

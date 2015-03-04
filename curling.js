@@ -79,7 +79,7 @@ function score(scores) {
                 }
             }
             else {
-                picks[i].topFour[j] = "<em>" + picks[i].topFour[j] + "</em>";
+                picks[i].topFour[j] = "<wrong><strong>" + picks[i].topFour[j] + "</strong></wrong>";
             }
         }
         for (j = 0; j < 6; j++) {
@@ -94,7 +94,7 @@ function score(scores) {
                 }
             }
             else {
-                picks[i].midSix[j] = "<em>" + picks[i].midSix[j] + "</em>";
+                picks[i].midSix[j] = "<wrong><strong>" + picks[i].midSix[j] + "</strong></wrong>";
             }
         }
         for (j = 0; j < 4; j++) {
@@ -109,7 +109,7 @@ function score(scores) {
                 }
             }
             else {
-                picks[i].botFour[j] = "<em>" + picks[i].botFour[j] + "</em>";
+                picks[i].botFour[j] = "<wrong><strong>" + picks[i].botFour[j] + "</strong></wrong>";
             }
         }
         ele.exactScore = exactScore;
