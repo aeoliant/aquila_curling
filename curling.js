@@ -10,7 +10,7 @@ function drawPicksTable(data, seperatedScores) {
 function drawPicksRow(rowData) {
     var row = $("<tr />")
     $("#picks").append(row);
-    row.append($("<td class='edge'><strong>" + rowData.name + "</strong></td>"));
+    row.append($("<td class='edge'>" + rowData.name + "</td>"));
     row.append($(arrToString(rowData.topFour, "td", false, true)));
     row.append($(arrToString(rowData.midSix, "td", false, true)));
     row.append($(arrToString(rowData.botFour, "td", false, false)));
@@ -34,7 +34,7 @@ function drawScoreTable(data) {
 function drawScoreRow(rowData) {
     var row = $("<tr />")
     $("#scores").append(row);
-    row.append($("<td><strong>" + rowData.name + "</strong></td>"));
+    row.append($("<td>" + rowData.name + "</td>"));
     row.append($("<td>" + rowData.score + "</td>"));
     row.append($("<td class='text-muted'><small>" + rowData.exactScore + "</small></td>"));
 }
@@ -50,11 +50,11 @@ function arrToString(arr, tag, standings, edge) {
             ret += "<" + tag + ">";
         }
         if (standings) {
-            ret += "<strong><etch>";
+            ret += "<etch>";
         }
         ret += printTransform(arr[i]);
         if (standings) {
-            ret += "</etch></strong>";
+            ret += "</etch>";
         }
         ret += "</" + tag + "> ";
     }
@@ -88,45 +88,45 @@ function score(scores) {
             if (scores.topFour.indexOf(picks[i].topFour[j]) >= 0) {
                 score++;
                 if (scores.topFour[j] == picks[i].topFour[j]) {
-                    picks[i].topFour[j] = "<mark><strong>" + picks[i].topFour[j] + "</strong></mark>";
+                    picks[i].topFour[j] = "<correct>" + picks[i].topFour[j] + "</correct>";
                     exactScore++;
                 }
                 else {
-                    picks[i].topFour[j] = "<highlight><strong>" + picks[i].topFour[j] + "</strong></highlight>";
+                    picks[i].topFour[j] = "<highlight>" + picks[i].topFour[j] + "</highlight>";
                 }
             }
             else {
-                picks[i].topFour[j] = "<wrong><strong>" + picks[i].topFour[j] + "</strong></wrong>";
+                picks[i].topFour[j] = "<wrong>" + picks[i].topFour[j] + "</wrong>";
             }
         }
         for (j = 0; j < 6; j++) {
             if (scores.midSix.indexOf(picks[i].midSix[j]) >= 0) {
                 score++;
                 if (scores.midSix[j] == picks[i].midSix[j]) {
-                    picks[i].midSix[j] = "<mark><strong>" + picks[i].midSix[j] + "</strong></mark>";
+                    picks[i].midSix[j] = "<correct>" + picks[i].midSix[j] + "</correct>";
                     exactScore++;
                 }
                 else {
-                    picks[i].midSix[j] = "<highlight><strong>" + picks[i].midSix[j] + "</strong></highlight>";
+                    picks[i].midSix[j] = "<highlight>" + picks[i].midSix[j] + "</highlight>";
                 }
             }
             else {
-                picks[i].midSix[j] = "<wrong><strong>" + picks[i].midSix[j] + "</strong></wrong>";
+                picks[i].midSix[j] = "<wrong>" + picks[i].midSix[j] + "</wrong>";
             }
         }
         for (j = 0; j < 4; j++) {
             if (scores.botFour.indexOf(picks[i].botFour[j]) >= 0) {
                 score++;
                 if (scores.botFour[j] == picks[i].botFour[j]) {
-                    picks[i].botFour[j] = "<mark><strong>" + picks[i].botFour[j] + "</strong></mark>";
+                    picks[i].botFour[j] = "<correct>" + picks[i].botFour[j] + "</correct>";
                     exactScore++;
                 }
                 else {
-                    picks[i].botFour[j] = "<highlight><strong>" + picks[i].botFour[j] + "</strong></highlight>";
+                    picks[i].botFour[j] = "<highlight>" + picks[i].botFour[j] + "</highlight>";
                 }
             }
             else {
-                picks[i].botFour[j] = "<wrong><strong>" + picks[i].botFour[j] + "</strong></wrong>";
+                picks[i].botFour[j] = "<wrong>" + picks[i].botFour[j] + "</wrong>";
             }
         }
         ele.exactScore = exactScore;

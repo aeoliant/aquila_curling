@@ -7,34 +7,43 @@ body {
 	padding-bottom:10px;
 }
 
-mark {
-	font-family: Consolas, Lucida Console, monospace;
+correct {
 	font-size: 20pt;
-	background-color: rgba(46, 204, 113, 0.75);
+	/*background-color: rgba(46, 204, 113, 0.75);
+	font-family: Consolas, Lucida Console, monospace;*/
+	text-decoration: underline;
+	font-weight: bold;
+	background-color: none;
+	font-weight: 400;
+	color:#000;
 }
 
 highlight {
 	padding: .2em;
 	color:#000;
-	background-color: rgba(245, 215, 110, 0.75);
-	font-family: Consolas, Lucida Console, monospace;
+	/*background-color: rgba(245, 215, 110, 0.75);
+	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
+	font-weight: bold;
+	font-weight: 400;
 }
 
 wrong {
 	padding: .2em;
 	color:#000;
-	background-color: rgba(231, 76, 60, 0.4);
-	font-family: Consolas, Lucida Console, monospace;
+	/*background-color: rgba(231, 76, 60, 0.4);
+	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
+	font-weight: 100;
 }
 
 etch {
 	padding: .2em;
 	color:#000;
-	background-color: rgba(52, 152, 219, 0.5);
-	font-family: Consolas, Lucida Console, monospace;
+	/*background-color: rgba(52, 152, 219, 0.1);
+	font-family: Consolas, Lucida Console, monospace;*/
 	font-size: 20pt;
+	font-weight: bold;
 }
 
 .edge {
