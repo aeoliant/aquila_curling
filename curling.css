@@ -15,16 +15,26 @@ highlight {
 	padding: .2em;
 	color:#000;
 	background-color: rgba(245, 215, 110, 0.75);
+	font-family: Consolas, Lucida Console, monospace;
+	font-size: 20pt;
 }
 
 wrong {
 	padding: .2em;
 	color:#000;
 	background-color: rgba(231, 76, 60, 0.4);
+	font-family: Consolas, Lucida Console, monospace;
+	font-size: 20pt;
 }
 
 etch {
 	padding: .2em;
 	color:#000;
-	background-color: rgba(52, 152, 219, 0.75);
+	background-color: rgba(52, 152, 219, 0.5);
+	font-family: Consolas, Lucida Console, monospace;
+	font-size: 20pt;
+}
+
+.edge {
+	border-right: 3px solid #ddd;
 }

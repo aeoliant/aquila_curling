@@ -10,23 +10,19 @@ function drawPicksTable(data, seperatedScores) {
 function drawPicksRow(rowData) {
     var row = $("<tr />")
     $("#picks").append(row);
-    row.append($("<td><strong>" + rowData.name + "</strong></td>"));
-    row.append($("<td>" + arrToString(rowData.topFour) + "</td>"));
-    row.append($("<td>" + arrToString(rowData.midSix) + "</td>"));
-    row.append($("<td>" + arrToString(rowData.botFour) + "</td>"));
-    row.append($("<td><small>" + rowData.score + "</small></td>"));
-    row.append($("<td class='text-muted'><small>" + rowData.exactScore + "</small></td>"));
+    row.append($("<td class='edge'><strong>" + rowData.name + "</strong></td>"));
+    row.append($(arrToString(rowData.topFour, "td", false, true)));
+    row.append($(arrToString(rowData.midSix, "td", false, true)));
+    row.append($(arrToString(rowData.botFour, "td", false, false)));
 }
 
 function drawStandingsRow(seperatedScores) {
     var row = $("<tr />")
     $("#picks").append(row);
-    row.append($("<td></td>"));
-    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.topFour, "etch") + "</strong></td>"));
-    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.midSix, "etch") + "</strong></td>"));
-    row.append($("<td class='text-'><strong>" + arrToString(seperatedScores.botFour, "etch") + "</strong></td>"));
-    row.append($("<td></td>"));
-    row.append($("<td></td>"));
+    row.append($("<td class='edge'></td>"));
+    row.append($(arrToString(seperatedScores.topFour, "td", true, true)));
+    row.append($(arrToString(seperatedScores.midSix, "td", true, true)));
+    row.append($(arrToString(seperatedScores.botFour, "td", true, false)));
 }
 
 function drawScoreTable(data) {
@@ -43,19 +39,40 @@ function drawScoreRow(rowData) {
     row.append($("<td class='text-muted'><small>" + rowData.exactScore + "</small></td>"));
 }
 
-function arrToString(arr, tag) {
+function arrToString(arr, tag, standings, edge) {
     var ret = "";
     var i = 0;
     for (; i < arr.length; i++) {
-        if (tag != undefined) {
-            ret += "<" + tag + ">" + arr[i] + "</" + tag + ">, ";
+        if (edge && i == arr.length - 1) {
+            ret += "<" + tag + " class='edge'>";
         }
         else {
-            ret += arr[i] + ", ";
+            ret += "<" + tag + ">";
         }
+        if (standings) {
+            ret += "<strong><etch>";
+        }
+        ret += printTransform(arr[i]);
+        if (standings) {
+            ret += "</etch></strong>";
+        }
+        ret += "</" + tag + "> ";
     }
-    ret = ret.substring(0, ret.length - 2);
     return ret;
+}
+
+function printTransform(provinceCode) {
+    var nwt = provinceCode.indexOf("NWT");
+    console.log(provinceCode, nwt);
+    if (nwt >= 0) {
+        return provinceCode.substring(0, nwt) + "NW" + provinceCode.substring(nwt + 3, provinceCode.length);
+    }
+    var pei = provinceCode.indexOf("PEI");
+    console.log(provinceCode, pei);
+    if (pei >= 0) {
+        return provinceCode.substring(0, pei) + "PE" + provinceCode.substring(pei + 3, provinceCode.length);
+    }
+    return provinceCode;
 }
 
 function score(scores) {
