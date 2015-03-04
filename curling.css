@@ -8,6 +8,8 @@ body {
 }
 
 mark {
+	font-family: Consolas, Lucida Console, monospace;
+	font-size: 20pt;
 	background-color: rgba(46, 204, 113, 0.75);
 }
 
