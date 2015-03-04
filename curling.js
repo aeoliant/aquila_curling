@@ -197,7 +197,10 @@ $(function() {
         $("#curlcast").append(otherPage.find("table")[0]);
         $("#curlcast table").removeClass("table-bordered table-condensed");
         $("#curlcast table").addClass("table-striped");
-        $("#curlcast a").attr("href", "http://curlcast.ca" + $("#curlcast a").attr("href"));
+        $.each($("#curlcast a"), function(index, atag) {
+            var jtag = $(atag);
+            jtag.attr("href", "http://curlcast.ca" + jtag.attr("href"));
+        });
         $("#curlcast a").attr("title", "");
         $("#curlcast a").attr("target", "_blank");
         var standingsTable = $("#curlcast table tr").map(function() {
